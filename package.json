@@ -1,0 +1,29 @@
+{
+    "name": "enketo-xpath-extensions",
+    "description": "Custom OpenClinica XPath funcions for Enketo-XpathJS",
+    "homepage": "https://enketo.org",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/openclinica/enketo-xpath-extensions-oc"
+    },
+    "main": "src/custom-functions",
+    "scripts": {
+        "test": "grunt karma:headless"
+    },
+    "author": "Martijn van de Rijdt",
+    "contributors": [],
+    "devDependencies": {
+        "browserify": "^16.2.0",
+        "chai": "^4.1.2",
+        "enketo-xpathjs": "*",
+        "grunt": "1.0.x",
+        "grunt-karma": "2.0.x",
+        "karma": "^2.0.2",
+        "karma-browserify": "^5.2.0",
+        "karma-chai": "^0.1.0",
+        "karma-chrome-launcher": "^2.2.0",
+        "karma-mocha": "1.3.x",
+        "mocha": "5.0.x"
+    }
+}
