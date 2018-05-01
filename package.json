@@ -1,8 +1,8 @@
 {
-    "name": "enketo-xpath-extensions",
+    "name": "enketo-xpath-extensions-oc",
     "description": "Custom OpenClinica XPath funcions for Enketo-XpathJS",
     "homepage": "https://enketo.org",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "repository": {
         "type": "git",
         "url": "https://github.com/openclinica/enketo-xpath-extensions-oc"
