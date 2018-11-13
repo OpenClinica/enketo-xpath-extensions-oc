@@ -1,9 +1,10 @@
 // Karma configuration
 // Generated on Wed Mar 04 2015 15:02:33 GMT-0700 (MST)
+const commonjs = require( 'rollup-plugin-commonjs' );
+const resolve = require( 'rollup-plugin-node-resolve' );
 
-'use strict';
 
-module.exports = function( config ) {
+module.exports = config => {
 
     // Force timezone for tests, so that datetime conversion results are predictable
     process.env.TZ = 'America/Phoenix';
@@ -16,7 +17,7 @@ module.exports = function( config ) {
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: [ 'browserify', 'mocha', 'chai' ],
+        frameworks: [ 'mocha', 'chai' ],
 
 
         // list of files / patterns to load in the browser
@@ -35,9 +36,25 @@ module.exports = function( config ) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'test/**/*.spec.js': [ 'browserify' ],
+            'test/**/*.spec.js': [ 'rollup' ],
         },
 
+        rollupPreprocessor: {
+            output: {
+                format: 'iife'
+            },
+            plugins: [
+                resolve( {
+                    module: true,
+                    main: true,
+                    browser: true
+                } ),
+                commonjs( {
+                    include: 'node_modules/**',
+                    sourceMap: false,
+                } )
+            ]
+        },
 
         // test results reporter to use
         // possible values: 'dots', 'progress'

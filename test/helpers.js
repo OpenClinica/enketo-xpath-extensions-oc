@@ -1,13 +1,14 @@
 const parser = new DOMParser();
-const XPathJS = require( 'enketo-xpathjs' );
+import XPathJS from 'enketo-xpathjs';
 const NAMESPACES = {
     'xhtml': 'http://www.w3.org/1999/xhtml',
 };
 
 // Add custom functions
-require( '../src/custom-functions' )( XPathJS );
+import extendXPath from '../src/custom-functions';
+extendXPath( XPathJS );
 
-module.exports = {
+export default {
     xhtmlResolver: {
         lookupNamespaceURI: prefix => NAMESPACES[ prefix ] ? NAMESPACES[ prefix ] : null
     },

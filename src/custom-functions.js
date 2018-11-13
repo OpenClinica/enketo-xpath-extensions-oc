@@ -1,12 +1,12 @@
-module.exports = function( XPathJS ) {
+export default function( XPathJS ) {
 
-    var FUNCTIONS = {
+    const FUNCTIONS = {
         'comment-status': {
 
-            fn: function( a ) {
-                var curValue = a.toString();
-                var status = '';
-                var comment;
+            fn( a ) {
+                const curValue = a.toString();
+                let status = '';
+                let comment;
 
                 if ( curValue ) {
                     try {
@@ -15,7 +15,7 @@ module.exports = function( XPathJS ) {
                         comment.logs = ( Array.isArray( comment.logs ) ) ? comment.logs : [];
                         if ( typeof comment === 'object' && comment !== null ) {
                             // duplicates _getCurrentStatus() in Dn.js
-                            comment.queries.concat( comment.logs ).some( function( item ) {
+                            comment.queries.concat( comment.logs ).some( item => {
                                 if ( typeof item === 'object' && item !== null && item.status ) {
                                     status = item.status;
                                     return true;
@@ -40,7 +40,7 @@ module.exports = function( XPathJS ) {
         }
     };
 
-    Object.keys( FUNCTIONS ).forEach( function( fnName ) {
+    Object.keys( FUNCTIONS ).forEach( fnName => {
         XPathJS.customXPathFunction.add( fnName, FUNCTIONS[ fnName ] );
     } );
 
