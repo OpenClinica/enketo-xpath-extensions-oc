@@ -14,11 +14,6 @@ describe( 'Custom "OpenClinica" functions', () => {
                 'comment': 'This is an older comment.',
                 'status': 'updated',
                 'user': 'Maurice Moss (moss)'
-            }, {
-                'type': 'audit',
-                'message': 'Item data value updated from old_value to new_value.',
-                'date_time': '2016-05-18 12:44:20 -06:00',
-                'user': 'Jen Barber (jen)',
             } ]
         };
         const b = {
@@ -37,6 +32,23 @@ describe( 'Custom "OpenClinica" functions', () => {
             } ],
             'logs': []
         };
+        const c = {
+            "logs": [],
+            "queries": [
+                { "type": "comment", "thread_id": "a", "status": "updated", "date_time": "2016-09-01 15:02 -06:00" },
+                { "type": "comment", "thread_id": "a", "status": "closed", "date_time": "2016-09-01 15:01 -06:00" },
+                { "type": "comment", "thread_id": "b", "status": "closed-modified", "date_time": "2016-07-01 15:01 -06:00" }
+            ]
+        };
+        const d = {
+            "logs": [],
+            "queries": [
+                { "type": "comment", "thread_id": "a", "status": "closed", "date_time": "2016-09-01 15:02 -06:00" },
+                { "type": "comment", "thread_id": "a", "status": "updated", "date_time": "2016-09-01 15:01 -06:00" },
+                { "type": "comment", "thread_id": "b", "status": "closed-modified", "date_time": "2016-07-01 15:01 -06:00" }
+            ]
+        };
+
 
         it( 'returns empty for empty node', () => {
             var el = doc.getElementById( 'oc1' );
@@ -51,9 +63,11 @@ describe( 'Custom "OpenClinica" functions', () => {
             [ 'comment-status(.)', {}, '' ],
             [ 'comment-status(.)', { queries: [] }, '' ],
             [ 'comment-status(.)', { logs: [] }, '' ],
-            [ 'comment-status(.)', a, 'updated' ],
+            [ 'comment-status(.)', a, '' ],
             [ 'comment-status(.)', b, 'updated' ],
-            [ 'comment-status(//*[@id="oc1"])', b, 'updated' ]
+            [ 'comment-status(//*[@id="oc1"])', b, 'updated' ],
+            [ 'comment-status(.)', c, 'updated' ],
+            [ 'comment-status(.)', d, 'closed' ],
         ].forEach( t => {
             it( 'correctly parses status', () => {
                 let result;
