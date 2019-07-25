@@ -11,7 +11,7 @@ export default function( XPathJS ) {
                 if ( curValue ) {
                     try {
                         comment = JSON.parse( curValue );
-                        if ( typeof comment !== 'object' ) {
+                        if ( typeof comment !== 'object' || Array.isArray( comment ) ) {
                             throw new Error( 'Not an object.' );
                         }
                         comment.queries = Array.isArray( comment.queries ) ? comment.queries : [];
