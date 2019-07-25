@@ -50,7 +50,6 @@ export default function( XPathJS ) {
 
             fn( a ) {
                 let val = a.toString();
-                console.error( 'VAL: ', a );
 
                 while ( val.length < 2 ) {
                     val = '0' + val;
