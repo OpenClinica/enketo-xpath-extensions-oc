@@ -2,7 +2,7 @@ import helpers from '../helpers';
 
 describe( 'Custom "OpenClinica" functions', () => {
 
-    const doc = helpers.getDoc( '<data><a id="oc1"/></data>' );
+    const doc = helpers.getDoc( '<data><a id="oc1"/><b id="oc2"/></data>' );
 
     describe( 'valid comment-status() calls', () => {
         const a = {
@@ -94,8 +94,57 @@ describe( 'Custom "OpenClinica" functions', () => {
             expect( test ).to.throw( /expects \(string\)/ );
         } );
 
-        it( 'with too many arguments', () => {
+        it( 'with too few arguments', () => {
             const test = () => doc.evaluate( 'comment-status()', doc.getElementById( 'oc1' ), helpers.xhtmlResolver, 2, null );
+            expect( test ).to.throw( /expects \(string\)/ );
+        } );
+
+    } );
+
+
+    describe( 'valid pad2() calls', () => {
+        const tests = [
+            [ '1', '01' ],
+            [ '', '00' ],
+            [ '01', '01' ],
+            [ '11', '11' ],
+            [ '001', '001' ],
+            [ 'abc', 'abc' ],
+            [ '-1', '-1' ],
+            [ 'a', '0a' ]
+        ];
+
+        // provide argument directly
+        tests.forEach( t => {
+            const expr = `pad2("${t[0]}")`;
+            it( `correctly evaluates ${expr}`, () => {
+                const result = doc.evaluate( expr, doc, null, 2, null );
+                expect( result.stringValue ).to.equal( t[ 1 ] );
+            } )
+        } );
+
+        // argument is XML node
+        tests.forEach( t => {
+            const expr = `pad2(.)`;
+
+            it( `correctly evaluates ${expr}`, () => {
+                const el = doc.getElementById( 'oc2' );
+                el.textContent = t[ 0 ];
+                const result = doc.evaluate( expr, el, null, 2, null );
+                expect( result.stringValue ).to.equal( t[ 1 ] );
+            } )
+        } );
+
+    } );
+
+    describe( 'invalid pad2() calls', () => {
+        it( 'with too many arguments', () => {
+            const test = () => doc.evaluate( 'pad2("2", "2nd argument")', doc, null, 2, null );
+            expect( test ).to.throw( /expects \(string\)/ );
+        } );
+
+        it( 'with too few arguments', () => {
+            const test = () => doc.evaluate( 'pad2()', doc, null, 2, null );
             expect( test ).to.throw( /expects \(string\)/ );
         } );
 

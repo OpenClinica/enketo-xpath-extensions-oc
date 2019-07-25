@@ -1,4 +1,4 @@
-Enketo XPath Extensions
+Enketo XPath Extensions [![Build Status](https://travis-ci.org/OpenClinica/enketo-xpath-extensions-oc.svg?branch=master)](https://travis-ci.org/OpenClinica/enketo-xpath-extensions-oc)
 =======
 
 Custom OpenClinica XPath functions. 

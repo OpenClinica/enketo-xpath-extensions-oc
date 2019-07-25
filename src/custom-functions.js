@@ -44,6 +44,27 @@ export default function( XPathJS ) {
 
             ret: 'string'
 
+        },
+
+        'pad2': {
+
+            fn( a ) {
+                let val = a.toString();
+                console.error( 'VAL: ', a );
+
+                while ( val.length < 2 ) {
+                    val = '0' + val;
+                }
+
+                return new XPathJS.customXPathFunction.type.StringType( val );
+            },
+
+            args: [
+                { t: 'string' }
+            ],
+
+            ret: 'string'
+
         }
     };
 
