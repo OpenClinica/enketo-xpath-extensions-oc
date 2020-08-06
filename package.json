@@ -2,6 +2,7 @@
     "name": "enketo-xpath-extensions-oc",
     "description": "Custom OpenClinica XPath funcions for Enketo-XpathJS",
     "homepage": "https://enketo.org",
+    "license": "Apache-2.0",
     "version": "2.1.0",
     "repository": {
         "type": "git",
@@ -15,17 +16,17 @@
     "contributors": [],
     "devDependencies": {
         "chai": "^4.2.0",
-        "enketo-xpathjs": "^1.9.2",
-        "grunt": "^1.0.4",
-        "grunt-karma": "^3.0.2",
-        "karma": "^3.1.4",
+        "enketo-xpathjs": "^1.9.4",
+        "grunt": "^1.2.1",
+        "grunt-karma": "^4.0.0",
+        "karma": "^5.1.1",
         "karma-chai": "^0.1.0",
-        "karma-chrome-launcher": "^2.2.0",
-        "karma-mocha": "1.3.x",
-        "karma-rollup-preprocessor": "^6.1.2",
-        "mocha": "5.2.x",
-        "rollup": "^0.67.4",
-        "rollup-plugin-commonjs": "^9.3.4",
-        "rollup-plugin-node-resolve": "^3.4.0"
+        "karma-chrome-launcher": "^3.1.0",
+        "karma-mocha": "^2.0.1",
+        "karma-rollup-preprocessor": "^7.0.5",
+        "mocha": "^8.1.1",
+        "rollup": "^2.23.0",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-node-resolve": "^5.2.0"
     }
 }
