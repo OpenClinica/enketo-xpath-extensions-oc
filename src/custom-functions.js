@@ -5,6 +5,7 @@ export default function( XPathJS ) {
 
             fn( a ) {
                 const curValue = a.toString();
+
                 let status = '';
                 let comment;
 
@@ -71,7 +72,7 @@ export default function( XPathJS ) {
         XPathJS.customXPathFunction.add( fnName, FUNCTIONS[ fnName ] );
     } );
 
-};
+}
 
 function _getThreads( commentsOrdered ) {
     let threads = [];
