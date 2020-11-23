@@ -1,4 +1,4 @@
-export default function( XPathJS ) {
+export default function( Evaluator ) {
 
     const FUNCTIONS = {
         'comment-status': {
@@ -36,7 +36,7 @@ export default function( XPathJS ) {
                     }
                 }
 
-                return new XPathJS.customXPathFunction.type.StringType( status );
+                return new Evaluator.customXPathFunction.type.StringType( status );
             },
 
             args: [
@@ -56,7 +56,7 @@ export default function( XPathJS ) {
                     val = '0' + val;
                 }
 
-                return new XPathJS.customXPathFunction.type.StringType( val );
+                return new Evaluator.customXPathFunction.type.StringType( val );
             },
 
             args: [
@@ -69,7 +69,7 @@ export default function( XPathJS ) {
     };
 
     Object.keys( FUNCTIONS ).forEach( fnName => {
-        XPathJS.customXPathFunction.add( fnName, FUNCTIONS[ fnName ] );
+        Evaluator.customXPathFunction.add( fnName, FUNCTIONS[ fnName ] );
     } );
 
 }
