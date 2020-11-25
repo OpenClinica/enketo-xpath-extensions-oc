@@ -1,10 +1,13 @@
 export default function( Evaluator ) {
 
+    // To cater to slight differences between old XPathJS and new ORXE evaluators
+    const NEW_ORXE = !Evaluator.customXPathFunction.type;
+
     const FUNCTIONS = {
         'comment-status': {
 
             fn( a ) {
-                const curValue = a.toString();
+                const curValue = NEW_ORXE ? a : a.toString();
 
                 let status = '';
                 let comment;
@@ -36,7 +39,7 @@ export default function( Evaluator ) {
                     }
                 }
 
-                return new Evaluator.customXPathFunction.type.StringType( status );
+                return NEW_ORXE ? status : new Evaluator.customXPathFunction.type.StringType( status );
             },
 
             args: [
@@ -50,13 +53,13 @@ export default function( Evaluator ) {
         'pad2': {
 
             fn( a ) {
-                let val = a.toString();
+                let val = NEW_ORXE ? a : a.toString();
 
                 while ( val.length < 2 ) {
                     val = '0' + val;
                 }
 
-                return new Evaluator.customXPathFunction.type.StringType( val );
+                return NEW_ORXE ? val : new Evaluator.customXPathFunction.type.StringType( val );
             },
 
             args: [

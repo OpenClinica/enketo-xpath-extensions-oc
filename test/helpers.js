@@ -8,7 +8,14 @@ const NAMESPACES = {
 // Add custom functions
 import extendXPath from '../src/custom-functions';
 extendXPath( XPathJS );
-extendXPath ( OpenRosaXPath );
+
+const OpenClinicaXPath = {
+  bind: doc => {
+    const evaluator = OpenRosaXPath();
+    extendXPath(evaluator);
+    doc.evaluate = evaluator.evaluate;
+  },
+};
 
 export default {
     xhtmlResolver: {
@@ -24,7 +31,7 @@ export default {
     getDocWithOpenRosaXpath: xmlStr => {
         const doc = parser.parseFromString( xmlStr, 'text/xml' );
 
-        OpenRosaXPath.bindDomLevel3XPath( doc );
+        OpenClinicaXPath.bind( doc );
 
         return doc;
     }
