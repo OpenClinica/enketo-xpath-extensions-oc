@@ -98,12 +98,12 @@ describe( 'Custom "OpenClinica" functions', () => {
         
                 it( 'with too many arguments', () => {
                     const test = () => doc.evaluate( 'comment-status(., "2nd argument")', doc.getElementById( 'oc1' ), helpers.xhtmlResolver, 2, null );
-                    expect( test ).to.throw( /expects \(string\)/ );
+                    expect( test ).to.throw( /comment-status.* expect/ );
                 } );
         
                 it( 'with too few arguments', () => {
                     const test = () => doc.evaluate( 'comment-status()', doc.getElementById( 'oc1' ), helpers.xhtmlResolver, 2, null );
-                    expect( test ).to.throw( /expects \(string\)/ );
+                    expect( test ).to.throw( /comment-status.* expect/ );
                 } );
         
             } );
@@ -147,12 +147,12 @@ describe( 'Custom "OpenClinica" functions', () => {
             describe( 'invalid pad2() calls', () => {
                 it( 'with too many arguments', () => {
                     const test = () => doc.evaluate( 'pad2("2", "2nd argument")', doc, null, 2, null );
-                    expect( test ).to.throw( /expects \(string\)/ );
+                    expect( test ).to.throw( /pad2.* expect/ );
                 } );
         
                 it( 'with too few arguments', () => {
                     const test = () => doc.evaluate( 'pad2()', doc, null, 2, null );
-                    expect( test ).to.throw( /expects \(string\)/ );
+                    expect( test ).to.throw( /pad2.* expect/ );
                 } );
         
             } );
