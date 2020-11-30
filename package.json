@@ -25,7 +25,7 @@
         "karma-mocha": "^2.0.1",
         "karma-rollup-preprocessor": "^7.0.5",
         "mocha": "^8.1.1",
-        "openrosa-xpath-evaluator": "alxndrsn/openrosa-xpath-evaluator#a8886e3",
+        "openrosa-xpath-evaluator": "alxndrsn/openrosa-xpath-evaluator#ca8cb45",
         "rollup": "^2.23.0",
         "rollup-plugin-commonjs": "^10.1.0",
         "rollup-plugin-node-resolve": "^5.2.0"
