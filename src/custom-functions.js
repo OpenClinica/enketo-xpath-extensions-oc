@@ -1,10 +1,14 @@
-export default function( XPathJS ) {
+export default function( Evaluator ) {
+
+    // To cater to slight differences between old XPathJS and new ORXE evaluators
+    const NEW_ORXE = !Evaluator.customXPathFunction.type;
 
     const FUNCTIONS = {
         'comment-status': {
 
             fn( a ) {
-                const curValue = a.toString();
+                const curValue = NEW_ORXE ? a : a.toString();
+
                 let status = '';
                 let comment;
 
@@ -35,7 +39,7 @@ export default function( XPathJS ) {
                     }
                 }
 
-                return new XPathJS.customXPathFunction.type.StringType( status );
+                return NEW_ORXE ? status : new Evaluator.customXPathFunction.type.StringType( status );
             },
 
             args: [
@@ -49,13 +53,13 @@ export default function( XPathJS ) {
         'pad2': {
 
             fn( a ) {
-                let val = a.toString();
+                let val = NEW_ORXE ? a : a.toString();
 
                 while ( val.length < 2 ) {
                     val = '0' + val;
                 }
 
-                return new XPathJS.customXPathFunction.type.StringType( val );
+                return NEW_ORXE ? val : new Evaluator.customXPathFunction.type.StringType( val );
             },
 
             args: [
@@ -68,10 +72,10 @@ export default function( XPathJS ) {
     };
 
     Object.keys( FUNCTIONS ).forEach( fnName => {
-        XPathJS.customXPathFunction.add( fnName, FUNCTIONS[ fnName ] );
+        Evaluator.customXPathFunction.add( fnName, FUNCTIONS[ fnName ] );
     } );
 
-};
+}
 
 function _getThreads( commentsOrdered ) {
     let threads = [];

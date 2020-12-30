@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+[2.2.0] - 2020-12-30
+--------------------
+##### Changed
+- Made compatible with new XPath evaluator
+
 [2.1.0] - 2019-07-25
 --------------------
 ##### Added 
